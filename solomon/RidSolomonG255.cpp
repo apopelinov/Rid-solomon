@@ -47,7 +47,7 @@ int* IDFTG255(int* numberArray, int size, int primary_element, int sizeGalua)
 			for (int k = 0; k < i * j; k++) // цикл вычисление степени элемента полинома
 			{
 				pow *= step;
-				if (pow > sizeGalua)
+				if (pow >= sizeGalua)
 				{
 					pow = pow % sizeGalua;
 				}
@@ -63,9 +63,9 @@ int* IDFTG255(int* numberArray, int size, int primary_element, int sizeGalua)
 	return resultArray;
 }
 
-int* DFTG255(int* numberArray, int size, int primary_element, int sizeGalua)
+double* DFTG255(int* numberArray, int size, int primary_element, int sizeGalua)
 {
-	int* resultArray = new int[size];
+	double* resultArray = new double[size];
 	int sum, del, element;
 	for (int i = 0; i < size; i++)
 	{
@@ -241,10 +241,11 @@ int* fixErrors(int* numberArray, int size, int* place)
 
 int main()
 {
-	const int size = 8;
-	int primary_element = 11;
-	int sizeGalua = 256;
-	int* array = new int[size] { 127, 230, 21, 57, 5, 192, 33, 81 };//mass
+	const int size = 12;
+	int primary_element = 499;
+	int sizeGalua = 255;
+	//int* array = new int[size] { 127, 230, 21, 57, 5, 192, 33, 81 };//mass
+	int* array = new int[size] { 3, 1, 2,3, 4,7,2,1, 0, 0, 0, 0 };//mass
 	int* result = IDFTG255(array, size,primary_element, sizeGalua);//результат который должен получиться
 
 	cout << "IDFT start array" << endl;
@@ -254,12 +255,13 @@ int main()
 	}
 	cout << endl << endl;
 
-	array = DFTG255(result, size, primary_element, sizeGalua);
+	double* arrayRez;
+	arrayRez = DFTG255(result, size, primary_element, sizeGalua);
 
 	cout << "DFT start array" << endl;
 	for (int i = 0; i < size; i++)
 	{
-		std::cout << array[i] << " ";
+		std::cout << arrayRez[i] << " ";
 	}
 	cout << endl << endl;
 	/*cout << "IDFT start array" << endl;
