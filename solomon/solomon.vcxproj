@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="rdso.cpp" />
     <ClCompile Include="RidSolomon.cpp" />
+    <ClCompile Include="RidSolomonG255.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rdso.h" />
